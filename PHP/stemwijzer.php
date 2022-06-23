@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Stemwijzer | Homepage</title>
+    <title>Stemwijzer | Stemwijzer</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
             <a id="homeBtn" href="index.php"><img src="assets/logo.png" alt="logo stemwijzer"></a>
             <a href="partijen.php">Partijen</a>
             <a href="themas.php">Thema's</a>
-            <a href="stemwijzer.php">Stemwijzer</a>
+            <a href="stemwijzer.php" class="active">Stemwijzer</a>
             <!-- Voor responsive nav het icoontje om het menu uit te klappen -->
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i></a>

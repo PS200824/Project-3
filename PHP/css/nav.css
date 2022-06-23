@@ -8,7 +8,10 @@
 }
 
 .topnav {
-    background-color: gray;
+    background-color: rgb(64, 64, 64);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
     margin-top: -8px;
     margin-left: -8px;
@@ -24,6 +27,7 @@
     padding: 18px 20px;
     text-decoration: none;
     font-size: 50px;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
 }
 
 .topnav a:hover {
@@ -45,7 +49,8 @@
 
 @media screen and (max-width: 850px) {
     .topnav {
-        background-color: gray;
+        background-color: rgb(64, 64, 64);
+        display: block;
     }
     .topnav a:not(:first-child) {
         display: none;
@@ -53,7 +58,7 @@
     .topnav a.icon {
         float: right;
         display: block;
-        background-color: rgb(90, 190, 224);
+        background-color: rgb(240, 61, 56);
     }
 }
 
