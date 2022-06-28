@@ -1,7 +1,20 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
+    color: white;
 }
 
 body {
     background-color: gray;
+}
+
+article {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+td,
+th {
+    border-bottom: 2px;
+    border-style: solid;
+    border-color: black;
 }

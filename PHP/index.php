@@ -17,6 +17,7 @@
         <div class="topnav" id="myTopnav">
             <a id="homeBtn" href="index.php"><img src="assets/logo.png" alt="logo stemwijzer"></a>
             <a href="partijen.php">Partijen</a>
+            <a href="verkiezingen.php">Verkiezingen</a>
             <a href="themas.php">Thema's</a>
             <a href="stemwijzer.php">Stemwijzer</a>
             <!-- Voor responsive nav het icoontje om het menu uit te klappen -->
@@ -36,7 +37,15 @@
             }
         </script>
         <article>
+            <h2>Stemwijzer</h2>
 
+            <p>
+                Welkom bij de StemWijzer!<br>
+                Wij helpen u graag bij het maken van uw keuze. <br>
+                U kunt hier alle benodigde informatie zien, en u kunt ook de <a href="stemwijzer.php">StemWijzer</a> uitvoeren. <br> 
+                Wij hopen dat we u hier nu voldoende geinformeerd hebben. <br>
+                En dan wensen wij u veel succes met het maken van uw keuze.
+            </p>
         </article>
     </div>
 </body>
