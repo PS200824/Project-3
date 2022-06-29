@@ -70,6 +70,8 @@ $dbHandler = new dbHandler();
             }
             ?>
         </table>
+
+       
     </article>
 
 </body>
