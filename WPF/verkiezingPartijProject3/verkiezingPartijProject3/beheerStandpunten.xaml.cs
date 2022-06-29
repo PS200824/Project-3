@@ -35,6 +35,7 @@ namespace verkiezingPartijProject3
             if (standpunt != null)
             {
                 dgStandpunten.ItemsSource = standpunt.DefaultView;
+
             }
         }
 
