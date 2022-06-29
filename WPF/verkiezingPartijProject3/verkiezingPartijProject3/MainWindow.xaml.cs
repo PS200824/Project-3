@@ -24,5 +24,41 @@ namespace verkiezingPartijProject3
         {
             InitializeComponent();
         }
+
+        private void btPartij_Click(object sender, RoutedEventArgs e)
+        {
+            beheerPartij win1 = new beheerPartij();
+            win1.Show();
+        }
+
+        private void btThema_Click(object sender, RoutedEventArgs e)
+        {
+            beheerThema win2 = new beheerThema();
+            win2.Show();
+        }
+
+        private void btStandpunten_Click(object sender, RoutedEventArgs e)
+        {
+            beheerStandpunten win3 = new beheerStandpunten();
+            win3.Show();
+        }
+
+        private void btVerkSoorten_Click(object sender, RoutedEventArgs e)
+        {
+            beheerVerzkiezingsoorten win4 = new beheerVerzkiezingsoorten();
+            win4.Show();
+        }
+
+        private void btVerkPartij_Click(object sender, RoutedEventArgs e)
+        {
+            beheerVerkiezingPartij win5 = new beheerVerkiezingPartij();
+            win5.Show();
+        }
+
+        private void btVerkiezingen_Click(object sender, RoutedEventArgs e)
+        {
+            beheerVerkiezingen win6 = new beheerVerkiezingen();
+            win6.Show();
+        }
     }
 }

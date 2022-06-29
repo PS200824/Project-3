@@ -1,3 +1,9 @@
+<?php
+include_once 'classes/dbHandler.php';
+
+$dbHandler = new dbHandler();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +43,43 @@
             }
         </script>
         <article>
+            <h2>Thema</h2>
 
+            <table>
+                <tr>
+                    <th>Thema</th>
+                </tr>
+                <?php $dataArray = $dbHandler->selectThema();
+
+                for ($rowCounter = 0; $rowCounter < count($dataArray); $rowCounter++) {
+                ?>
+                    <tr>
+                        <td><?= $dataArray[$rowCounter]["thema"] ?></td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </table>
+            
+            <h3>Standpunten per thema</h3>
+
+            <table>
+                <tr>
+                    <th>Standpunt</th>
+                    <th>Thema</th>
+                </tr>
+                <?php $dataArray = $dbHandler->selectStandpuntThema();
+
+                for ($rowCounter = 0; $rowCounter < count($dataArray); $rowCounter++) {
+                ?>
+                    <tr>
+                        <td><?= $dataArray[$rowCounter]["standpunt"] ?></td>
+                        <td><?= $dataArray[$rowCounter]["thema"] ?></td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </table>
         </article>
     </div>
 </body>

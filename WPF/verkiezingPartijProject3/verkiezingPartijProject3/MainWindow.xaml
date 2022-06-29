@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="img/stemmen.jpg" Opacity="0.6"/>
+        </Grid.Background>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -19,9 +23,20 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock></TextBlock>
+        <TextBlock Background="Black" Grid.ColumnSpan="4" Margin="45,15,45,15"></TextBlock>
+        <TextBlock Grid.ColumnSpan="4" FontWeight="Bold" FontSize="20" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" >StemWijzer beheerder</TextBlock>
+        <Image Source="Assets/logo.png" Width="60" HorizontalAlignment="Left" Margin="100,0,0,0"></Image>
+
+        <Button x:Name="btPartij" Click="btPartij_Click" Width="170" Height="40" Content="Beheer Partij" Foreground="White" Background="Black" BorderBrush="#383e42" FontWeight="Bold" FontSize="13" Grid.Row="1" Grid.Column="1"></Button>
+        <Button x:Name="btThema" Click="btThema_Click" Width="170" Height="40" Content="Beheer Thema's" Foreground="White" Background="Black" BorderBrush="#383e42" FontWeight="Bold" FontSize="13" Grid.Row="2" Grid.Column="1"></Button>
+        <Button x:Name="btStandpunten" Click="btStandpunten_Click" Width="170" Height="40" Content="Beheer Standpunten" Foreground="White" Background="Black" BorderBrush="#383e42" FontWeight="Bold" FontSize="13" Grid.Row="3" Grid.Column="1"></Button>
+
+        <Line Stroke="Black" StrokeThickness="40" Width="10" HorizontalAlignment="Right" Grid.Row="1" Margin="0,0,0,10" Grid.Column="1" Grid.RowSpan="4" ></Line>
+
+        <Button x:Name="btVerkSoorten" Click="btVerkSoorten_Click" Width="170" Height="40" Content="Beheer Verkiezingssoorten" Foreground="White" Background="Black" BorderBrush="#383e42" FontWeight="Bold" FontSize="13" Grid.Row="1" Grid.Column="2"></Button>
+        <Button x:Name="btVerkPartij" Click="btVerkPartij_Click" Width="170" Height="40" Content="Beheer Verkiezingspartij"  Foreground="White" Background="Black" BorderBrush="#383e42" FontWeight="Bold" FontSize="13" Grid.Row="2" Grid.Column="2"></Button>
+        <Button x:Name="btVerkiezingen" Click="btVerkiezingen_Click" Width="170" Height="40" Content="Beheer Verkiezingen" Foreground="White" Background="Black" BorderBrush="#383e42" FontWeight="Bold" FontSize="13" Grid.Row="3" Grid.Column="2"></Button>
     </Grid>
 </Window>

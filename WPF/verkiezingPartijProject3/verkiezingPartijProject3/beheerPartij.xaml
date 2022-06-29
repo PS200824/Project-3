@@ -1,0 +1,98 @@
+﻿<Window x:Class="verkiezingPartijProject3.beheerPartij"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:verkiezingPartijProject3"
+        mc:Ignorable="d"
+        Title="beheerPartij" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="img/stemmen.jpg" Opacity="0.6"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Background="Black" Grid.ColumnSpan="4" Margin="45,15,45,15"></TextBlock>
+        <TextBlock Grid.ColumnSpan="4" FontWeight="Bold" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" >Beheer Partij</TextBlock>
+        <Image Source="Assets/logo.png" Width="70" HorizontalAlignment="Left" Margin="100,0,0,0"></Image>
+
+
+        <DataGrid  x:Name="dgPartij" Background="LightGray" SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="3" Margin="80,0,80,30" SelectionChanged="dgPartij_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding naam}" Header="Naam"/>
+                <DataGridTextColumn Binding="{Binding adres}" Header="Aders"/>
+                <DataGridTextColumn Binding="{Binding postcode}" Header="Postcode"/>
+                <DataGridTextColumn Binding="{Binding gemeente}" Header="Gemeente"/>
+                <DataGridTextColumn Binding="{Binding emailadres}" Header="Emailadres"/>
+                <DataGridTextColumn Binding="{Binding telefoonnummer}" Header="Telefoonnummer"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="1" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <TextBlock Visibility="Hidden" Width="80" Text="ID:"/>
+                <TextBlock Visibility="Hidden" x:Name="tbId"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,0,30,0">
+                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Height="30" Width="50" >Naam:</Label>
+                <TextBox x:Name="tbNaam" Background="#EFEDED" HorizontalAlignment="Center" VerticalAlignment="Top" Height="30" Width="100" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,0,30,0">
+                <Label  HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="50" >Adres:</Label>
+                <TextBox x:Name="tbAdres" Background="#EFEDED" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="100"></TextBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,50,0">
+                <Label  Height="30" Width="65">Postcode:</Label>
+                <TextBox x:Name="tbPostcode" Background="#EFEDED" Height="30" Width="100"></TextBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,50,0">
+                <Label Height="30" Width="70">Gemeente:</Label>
+                <TextBox x:Name="tbGemeente" Background="#EFEDED" Height="30" Width="100"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,30,0">
+                <Label Height="30" Width="70">Emailadres:</Label>
+                <TextBox x:Name="tbEmailAdres" Background="#EFEDED" Height="30" Width="100"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,70,0">
+                <Label Height="30" Width="110" >Telefoonnummer:</Label>
+                <TextBox x:Name="tbTelefoonnummer" Background="#EFEDED" Height="30" Width="100"></TextBox>
+            </StackPanel>
+
+            <Button x:Name="btnDeletepar" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Width="70" HorizontalAlignment="Right" Margin="0,0,160,0" Height="20" Background="Black" Foreground="White" Content="Verwijderen" Click="btnDeletepar_Click"/>
+            <Button x:Name="btnUpdatepar" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="1" Width="70" Height="20" Background="Black" Foreground="White" Content="Wijzigen" Click="btnUpdatepar_Click"/>
+            <Button x:Name="btnCreatepar" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Width="70" Height="20" Content="Toevoegen" Background="Black" Foreground="White" Click="btnCreatepar_Click"/>
+        </Grid>
+    </Grid>
+</Window>
