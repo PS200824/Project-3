@@ -39,18 +39,12 @@ namespace verkiezingPartijProject3
             }
         }
 
-        private void FillCombobox()
+        public void FillCombobox()
         {
             DataTable partij = _dbBeheer.SelectPartij();
             if (partij != null)
             {
                 cbPartij.ItemsSource = partij.DefaultView;
-            }
-
-            DataTable thema = _dbBeheer.SelectThema();
-            if (thema != null)
-            {
-                cbThema.ItemsSource = thema.DefaultView;
             }
 
             DataTable standpunt = _dbBeheer.SelectStandpunt();
@@ -61,24 +55,51 @@ namespace verkiezingPartijProject3
 
             //Get selected item from comboBox Thema.
             /*DataTable tId = (DataTable)cbThema.SelectedItem;*/
-            ComboBoxItem td = (ComboBoxItem)cbThema.SelectedItem;
-
-
         }
 
         private void btnDeleteSta_Click(object sender, RoutedEventArgs e)
         {
+            int part = (int)cbPartij.SelectedValue;
+            int stanP = (int)cbStandpunt.SelectedValue;
 
+            _dbBeheer.DeleteStandpunten(part, stanP, tbMe.Text);
+
+            FillDataGrid();
         }
 
         private void btnUpdateSta_Click(object sender, RoutedEventArgs e)
         {
+            int part = (int)cbPartij.SelectedValue;
+            int stanP = (int)cbStandpunt.SelectedValue;
 
+            _dbBeheer.UpdateStandpunten(part, stanP, tbMe.Text);
+
+            FillDataGrid();
         }
 
         private void btnCreateSta_Click(object sender, RoutedEventArgs e)
         {
+            int part = (int)cbPartij.SelectedValue;
+            int stanP = (int)cbStandpunt.SelectedValue;
 
+            _dbBeheer.InsertStandpunten(part, stanP, tbMe.Text);
+
+            FillDataGrid();
+
+        }
+
+        private void dgStandpunten_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid dg = sender as DataGrid;
+            DataRowView dr = dg.SelectedItem as DataRowView;
+            if (dr != null)
+            {
+                tbMe.Text = dr["mening"].ToString();
+
+                /*btnUpdatepar.IsEnabled = true;
+                btnDeletepar.IsEnabled = true;
+                btnCreatepar.IsEnabled = false;*/
+            }
         }
     }
 }
