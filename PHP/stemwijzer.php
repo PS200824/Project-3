@@ -23,7 +23,6 @@ $dbHandler = new dbHandler();
         <div class="topnav" id="myTopnav">
             <a id="homeBtn" href="index.php"><img src="assets/logo.png" alt="logo stemwijzer"></a>
             <a href="partijen.php">Partijen</a>
-            <a href="verkiezingen.php">Verkiezingen</a>
             <a href="themas.php">Thema's</a>
             <a href="stemwijzer.php" class="active">Stemwijzer</a>
             <!-- Voor responsive nav het icoontje om het menu uit te klappen -->
