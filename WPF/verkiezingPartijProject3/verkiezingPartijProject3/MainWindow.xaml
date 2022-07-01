@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:verkiezingPartijProject3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Icon="img/favicon.ico"
+    Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="img/stemmen.jpg" Opacity="0.6"/>

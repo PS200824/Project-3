@@ -317,6 +317,82 @@ namespace verkiezingPartijProject3.Classes
             return result;
         }
 
+        //_____________ CREATE ________________
+
+        public bool InsertVerkiezingsoorten(string verkiezingsoort)
+        {
+            bool succes = false;
+            try
+            {
+                _dbConnect.Open();
+                MySqlCommand command = _dbConnect.CreateCommand();
+                command.CommandText = "INSERT INTO `verkiezingsoort` (`verkiezingsoort`) VALUES (@verkiezingsoort)";
+                command.Parameters.AddWithValue("@verkiezingsoort", verkiezingsoort);
+                int nrOfRowsAffected = command.ExecuteNonQuery();
+                succes = (nrOfRowsAffected != 0);
+            }
+            catch (Exception)
+            {
+                //Problem with the database
+            }
+            finally
+            {
+                _dbConnect.Close();
+            }
+            return succes;
+        }
+
+        // ______________ Delete __________________
+
+        public bool DeleteVerkiezingsoort(string verkiezingsoort_id)
+        {
+            bool succes = false;
+            try
+            {
+                _dbConnect.Open();
+                MySqlCommand command = _dbConnect.CreateCommand();
+                command.CommandText = "DELETE FROM verkiezingsoort WHERE verkiezingsoort.verkiezingsoort_id = @verkiezingsoort_id";
+                command.Parameters.AddWithValue("@verkiezingsoort_id", verkiezingsoort_id);
+                int nrOfRowsAffected = command.ExecuteNonQuery();
+                succes = (nrOfRowsAffected != 0);
+            }
+            catch (Exception)
+            {
+                //Problem with the database
+            }
+            finally
+            {
+                _dbConnect.Close();
+            }
+            return succes;
+        }
+
+        //_____________ Update ____________
+
+        public bool UpdateVerkiezingsoort(string id, string verkiezingsoort)
+        {
+            bool succes = false;
+            try
+            {
+                _dbConnect.Open();
+                MySqlCommand command = _dbConnect.CreateCommand();
+                command.CommandText = "UPDATE `verkiezingsoort` SET `verkiezingsoort` = @verkiezingsoort WHERE `verkiezingsoort`.`verkiezingsoort_id` = @id;";
+                command.Parameters.AddWithValue("@verkiezingsoort", verkiezingsoort);
+                command.Parameters.AddWithValue("@id", id);
+                int nrOfRowsAffected = command.ExecuteNonQuery();
+                succes = (nrOfRowsAffected != 0);
+            }
+            catch (Exception)
+            {
+                //Problem with the database
+            }
+            finally
+            {
+                _dbConnect.Close();
+            }
+            return succes;
+        }
+
         // ___________________________________ VerkiezingsPartij __________________________________________
 
         //_______ Select VerkiezingsPartij _________

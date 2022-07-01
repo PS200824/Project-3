@@ -5,11 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:verkiezingPartijProject3"
         mc:Ignorable="d"
+        Icon="img/favicon.ico"
         Title="beheerVerkiezingen" Height="450" Width="800">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="img/stemmen.jpg" Opacity="0.6"/>
         </Grid.Background>
-        <TextBlock>Beheer Verkiezingen</TextBlock>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Background="Black" Grid.ColumnSpan="4" Margin="45,15,45,15"></TextBlock>
+        <TextBlock Grid.ColumnSpan="4" FontWeight="Bold" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" >Beheer Verkiezingen</TextBlock>
+        <Image Source="Assets/logo.png" Width="70" HorizontalAlignment="Left" Margin="100,0,0,0"></Image>
+
+
+        <DataGrid  x:Name="dgVerkiezing" Background="White" SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="3" Margin="80,0,80,30" SelectionChanged="dgVerkSo_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding verkiezing_id}" Header="ID"/>
+                <DataGridTextColumn Binding="{Binding verkiezingsoort}" Header="ID"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel>
+            <TextBlock Visibility="Hidden" Width="80" Text="ID:"/>
+            <TextBlock Visibility="Hidden" x:Name="tbId"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="0,0,160,30" Height="32">
+            <Label Margin="0,0,10,0" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Height="30" Width="115" >Verkiezingen:</Label>
+            <TextBox x:Name="tbVerkiezingen" Background="#EFEDED" HorizontalAlignment="Center" VerticalAlignment="Top" Height="30" Width="145" />
+        </StackPanel>
+
+        <Button x:Name="btnDeleteVerS" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Width="70" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,160,10" Height="20" Background="Black" Foreground="White" Content="Verwijderen" Click="btnDeleteVerS_Click"/>
+        <Button x:Name="btnUpdateVerS" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" Width="70" VerticalAlignment="Bottom" Height="20" Background="Black" Margin="0,0,0,10" Foreground="White" Content="Wijzigen" Click="btnUpdateVerS_Click"/>
+        <Button x:Name="btnCreateVerS" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Width="70" VerticalAlignment="Bottom" Height="20" Content="Toevoegen" Margin="0,0,0,10" Background="Black" Foreground="White" Click="btnCreateVerS_Click"/>
+
     </Grid>
 </Window>

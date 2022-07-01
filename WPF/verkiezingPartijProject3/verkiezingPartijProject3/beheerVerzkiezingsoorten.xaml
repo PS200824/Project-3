@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:verkiezingPartijProject3"
         mc:Ignorable="d"
-        Title="beheerVerzkiezingsoorten" Height="450" Width="800">
+        Icon="img/favicon.ico"
+        Title="Beheer Verzkiezingsoorten" Height="450" Width="800">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="img/stemmen.jpg" Opacity="0.6"/>
@@ -26,7 +27,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Background="Black" Grid.ColumnSpan="4" Margin="45,15,45,15"></TextBlock>
-        <TextBlock Grid.ColumnSpan="4" FontWeight="Bold" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" >Beheer Partij</TextBlock>
+        <TextBlock Grid.ColumnSpan="4" FontWeight="Bold" FontSize="30" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" >Beheer Verkiezingsoorten</TextBlock>
         <Image Source="Assets/logo.png" Width="70" HorizontalAlignment="Left" Margin="100,0,0,0"></Image>
 
 
@@ -42,9 +43,9 @@
             <TextBlock Visibility="Hidden" x:Name="tbId"/>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,0,160,30" Height="32">
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="0,0,160,30" Height="32">
             <Label Margin="0,0,10,0" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Height="30" Width="115" >Verkiezingsoorten:</Label>
-            <TextBox x:Name="tbThema" Background="#EFEDED" HorizontalAlignment="Center" VerticalAlignment="Top" Height="30" Width="105" />
+            <TextBox x:Name="tbVerkiezingsoort" Background="#EFEDED" HorizontalAlignment="Center" VerticalAlignment="Top" Height="30" Width="145" />
         </StackPanel>
 
         <Button x:Name="btnDeleteVerS" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Width="70" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,160,10" Height="20" Background="Black" Foreground="White" Content="Verwijderen" Click="btnDeleteVerS_Click"/>

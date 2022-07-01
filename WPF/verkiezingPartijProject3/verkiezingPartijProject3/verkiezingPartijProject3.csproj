@@ -193,5 +193,8 @@
   <ItemGroup>
     <Resource Include="img\stemmen.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\favicon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

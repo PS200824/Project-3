@@ -39,22 +39,61 @@ namespace verkiezingPartijProject3
 
         private void dgVerkSo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            DataGrid dg = sender as DataGrid;
+            DataRowView dr = dg.SelectedItem as DataRowView;
+            if (dr != null)
+            {
+                tbId.Text = dr["verkiezingsoort_id"].ToString();
+                tbVerkiezingsoort.Text = dr["verkiezingsoort"].ToString();
 
+            }
         }
 
         private void btnDeleteVerS_Click(object sender, RoutedEventArgs e)
         {
+           
+            DataRowView selectedRow = dgVerkSo.SelectedItem as DataRowView;
 
+            if (_dbBeheer.DeleteVerkiezingsoort(selectedRow["verkiezingsoort_id"].ToString()))
+            {
+                MessageBox.Show($"Verkiezingsoort {selectedRow["verkiezingsoort_id"]} verwijderd");
+                tbVerkiezingsoort.Clear();
+            }
+            else
+            {
+                MessageBox.Show($"Verwijderen van verkiezingsoort {selectedRow["verkiezingsoort_id"]} mislukt");
+            }
+            FillDataGrid();
+            
         }
 
         private void btnUpdateVerS_Click(object sender, RoutedEventArgs e)
         {
-
+            if (_dbBeheer.UpdateVerkiezingsoort(tbId.Text, tbVerkiezingsoort.Text))
+            {
+                MessageBox.Show($"Verkiezingsoort {tbId.Text} aangepast");
+                tbVerkiezingsoort.Clear();
+            }
+            else
+            {
+                MessageBox.Show($"Aanpassen van . {tbId.Text} . mislukt");
+            }
+            FillDataGrid();
         }
 
         private void btnCreateVerS_Click(object sender, RoutedEventArgs e)
         {
-
+            if (_dbBeheer.InsertVerkiezingsoorten(tbVerkiezingsoort.Text))
+            {
+                MessageBox.Show($"Verkiezingsoort aangemaakt");
+                tbVerkiezingsoort.Clear();
+            }
+            else
+            {
+                MessageBox.Show($"Verkiezingsoort mislukt");
+                
+            }
+            FillDataGrid();
         }
     }
 }
