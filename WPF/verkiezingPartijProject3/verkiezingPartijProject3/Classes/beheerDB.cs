@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace verkiezingPartijProject3.Classes
 {
@@ -274,20 +275,150 @@ namespace verkiezingPartijProject3.Classes
             }
             return result;
 
-            
-
-
-            /*
-             * standpunt
-                4- SELECT* FROM `partij` WHERE `thema_id` = 2(int thema_id) if int is not NULL / 0
-                3- put selected thema_id in INT thema_id
-                2- SELECT `thema_id` FROM `thema` WHERE `thema` = (string => selected thema)
-                1- Show thema's
-
-                Partij
-                Add thema combobox in beheer partij => show names in interface and save id in database
-            */
         }
+
+        public DataTable PartijbyName(string naam)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                _dbConnect.Open();
+                MySqlCommand command = _dbConnect.CreateCommand();
+                command.CommandText = "SELECT * FROM partij WHERE naam = @naam";
+                command.Parameters.AddWithValue("@naam", naam);
+                MySqlDataReader reader = command.ExecuteReader();
+                result.Load(reader);
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                _dbConnect.Close();
+            }
+            return result;
+        }
+
+        public DataTable StandpuntbyName(string standpunt)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                _dbConnect.Open();
+                MySqlCommand command = _dbConnect.CreateCommand();
+                command.CommandText = "SELECT * FROM standpunt WHERE standpunt = @standpunt";
+                command.Parameters.AddWithValue("@standpunt", standpunt);
+                MySqlDataReader reader = command.ExecuteReader();
+                result.Load(reader);
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                _dbConnect.Close();
+            }
+            return result;
+        }
+
+        public bool InsertStandpunten(int part, int stanP, string mening)
+        {
+/*            int partId = (int)part["partij_id"];
+            int standId = (int)stanP["standpunt_id"];*/
+
+            bool succes = false;
+            try
+            {
+                _dbConnect.Open();
+                MySqlCommand command = _dbConnect.CreateCommand();
+                command.CommandText = "INSERT INTO `partij_standpunt` (`standpunt_id`, `partij_id`,`mening`) VALUES (@stanP, @part, @mening)";
+                command.Parameters.AddWithValue("@part", part);
+                command.Parameters.AddWithValue("@stanP", stanP);
+                command.Parameters.AddWithValue("@mening", mening);
+                int nrOfRowsAffected = command.ExecuteNonQuery();
+                succes = (nrOfRowsAffected != 0);
+            }
+            catch (Exception)
+            {
+                //Problem with the database
+            }
+            finally
+            {
+                _dbConnect.Close();
+            }
+            return succes;
+        }
+
+        public bool DeleteStandpunten(int part, int stanP, string mening)
+        {
+            /*            int partId = (int)part["partij_id"];
+                        int standId = (int)stanP["standpunt_id"];*/
+
+            bool succes = false;
+            try
+            {
+                _dbConnect.Open();
+                MySqlCommand command = _dbConnect.CreateCommand();
+                command.CommandText = "DELETE FROM `partij_standpunt` WHERE `partij_standpunt`.`standpunt_id` = @stanP AND `partij_standpunt`.`partij_id` = @part AND `partij_standpunt`.`mening` = @mening";
+                command.Parameters.AddWithValue("@part", part);
+                command.Parameters.AddWithValue("@stanP", stanP);
+                command.Parameters.AddWithValue("@mening", mening);
+                int nrOfRowsAffected = command.ExecuteNonQuery();
+                succes = (nrOfRowsAffected != 0);
+            }
+            catch (Exception)
+            {
+                //Problem with the database
+            }
+            finally
+            {
+                _dbConnect.Close();
+            }
+            return succes;
+        }
+
+
+        public bool UpdateStandpunten(int part, int stanP, string mening)
+        {
+            /*            int partId = (int)part["partij_id"];
+                        int standId = (int)stanP["standpunt_id"];*/
+
+            bool succes = false;
+            try
+            {
+                _dbConnect.Open();
+                MySqlCommand command = _dbConnect.CreateCommand();
+                command.CommandText = "UPDATE `partij_standpunt` SET `mening`= @mening WHERE `standpunt_id`= @stanp AND `partij_id`= @part";
+                command.Parameters.AddWithValue("@part", part);
+                command.Parameters.AddWithValue("@stanP", stanP);
+                command.Parameters.AddWithValue("@mening", mening);
+                int nrOfRowsAffected = command.ExecuteNonQuery();
+                succes = (nrOfRowsAffected != 0);
+            }
+            catch (Exception)
+            {
+                //Problem with the database
+            }
+            finally
+            {
+                _dbConnect.Close();
+            }
+            return succes;
+        }
+
+        /*
+         * standpunt
+            4- SELECT* FROM `partij` WHERE `thema_id` = 2(int thema_id) if int is not NULL / 0
+            3- put selected thema_id in INT thema_id
+            2- SELECT `thema_id` FROM `thema` WHERE `thema` = (string => selected thema)
+            1- Show thema's
+
+            Partij
+            Add thema combobox in beheer partij => show names in interface and save id in database
+        */
+
 
         // ___________________________________ Verkiezingsoorten __________________________________________
 

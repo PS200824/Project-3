@@ -31,7 +31,7 @@
         <Image Source="Assets/logo.png" Width="70" HorizontalAlignment="Left" Margin="100,0,0,0"></Image>
         
         
-        <DataGrid  x:Name="dgStandpunten" Background="White" SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="3" Margin="80,0,80,30">
+        <DataGrid  x:Name="dgStandpunten" Background="White" SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="3" Margin="80,0,80,30" SelectionChanged="dgStandpunten_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding naam}" Header="Naam"/>
                 <DataGridTextColumn Binding="{Binding standpunt}" Header="standpunt"/>
@@ -46,18 +46,13 @@
           SelectedValuePath="partij_id" 
           DisplayMemberPath="naam" />
 
-        <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,0,0,0" Width="40" Height="20"> Thema:</TextBlock>
-        <ComboBox Grid.Row="1" Grid.Column="1" Margin="0,0,50,0" Width="100" Height="30" Grid.ColumnSpan="2" x:Name="cbThema" Foreground="Black"
-          SelectedValuePath="thema_id" 
-          DisplayMemberPath="thema"/>
-
-        <TextBlock Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" Margin="0,0,0,0" Width="60" Height="20"> Standpunt:</TextBlock>
-        <ComboBox Grid.Row="1" Grid.Column="2" Margin="0,0,30,0" Width="100" Height="30" Grid.ColumnSpan="2" x:Name="cbStandpunt" Foreground="Black"
+        <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,0,0,0" Width="60" Height="20"> Standpunt:</TextBlock>
+        <ComboBox Grid.Row="1" Grid.Column="1" Margin="0,0,30,0" Width="100" Height="30" Grid.ColumnSpan="2" x:Name="cbStandpunt" Foreground="Black"
           SelectedValuePath="standpunt_id" 
           DisplayMemberPath="standpunt"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="3" Width="50" Height="20" Margin="0,0,50,0">Mening:</TextBlock>
-        <TextBox x:Name="tbMe" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,10,0" Width="90" Height="30"></TextBox>
+        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Width="50" Height="20" Margin="0,0,50,0">Mening:</TextBlock>
+        <TextBox x:Name="tbMe" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,10,0" Width="90" Height="30"></TextBox>
 
         <Button x:Name="btnDeleteSta" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Width="70" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,160,10" Height="20" Background="Black" Foreground="White" Content="Verwijderen" Click="btnDeleteSta_Click"/>
         <Button x:Name="btnUpdateSta" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" Width="70" VerticalAlignment="Bottom" Height="20" Background="Black" Margin="0,0,0,10" Foreground="White" Content="Wijzigen" Click="btnUpdateSta_Click"/>
