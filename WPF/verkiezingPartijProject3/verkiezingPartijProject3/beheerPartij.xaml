@@ -57,7 +57,7 @@
 
             <StackPanel>
                 <TextBlock Visibility="Hidden" Width="80" Text="ID:"/>
-                <TextBlock Visibility="Hidden" x:Name="tbId"/>
+                <TextBlock Visibility="Visible" x:Name="tbId"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,0,30,0">

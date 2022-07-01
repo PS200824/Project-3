@@ -277,6 +277,52 @@ namespace verkiezingPartijProject3.Classes
 
         }
 
+        public DataTable PartijbyName(string naam)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                _dbConnect.Open();
+                MySqlCommand command = _dbConnect.CreateCommand();
+                command.CommandText = "SELECT * FROM partij WHERE naam = @naam";
+                command.Parameters.AddWithValue("@naam", naam);
+                MySqlDataReader reader = command.ExecuteReader();
+                result.Load(reader);
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                _dbConnect.Close();
+            }
+            return result;
+        }
+
+        public DataTable StandpuntbyName(string standpunt)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                _dbConnect.Open();
+                MySqlCommand command = _dbConnect.CreateCommand();
+                command.CommandText = "SELECT * FROM standpunt WHERE standpunt = @standpunt";
+                command.Parameters.AddWithValue("@standpunt", standpunt);
+                MySqlDataReader reader = command.ExecuteReader();
+                result.Load(reader);
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                _dbConnect.Close();
+            }
+            return result;
+        }
+
         public bool InsertStandpunten(int part, int stanP, string mening)
         {
 /*            int partId = (int)part["partij_id"];
@@ -315,7 +361,7 @@ namespace verkiezingPartijProject3.Classes
             {
                 _dbConnect.Open();
                 MySqlCommand command = _dbConnect.CreateCommand();
-                command.CommandText = "DELETE FROM `partij_standpunt` WHERE `partij_standpunt`.`standpunt_id` = @stanP, `partij_standpunt`.`partij_id` = @part,`partij_standpunt`.`mening` = @mening";
+                command.CommandText = "DELETE FROM `partij_standpunt` WHERE `partij_standpunt`.`standpunt_id` = @stanP AND `partij_standpunt`.`partij_id` = @part AND `partij_standpunt`.`mening` = @mening";
                 command.Parameters.AddWithValue("@part", part);
                 command.Parameters.AddWithValue("@stanP", stanP);
                 command.Parameters.AddWithValue("@mening", mening);
@@ -333,6 +379,34 @@ namespace verkiezingPartijProject3.Classes
             return succes;
         }
 
+
+        public bool UpdateStandpunten(int part, int stanP, string mening)
+        {
+            /*            int partId = (int)part["partij_id"];
+                        int standId = (int)stanP["standpunt_id"];*/
+
+            bool succes = false;
+            try
+            {
+                _dbConnect.Open();
+                MySqlCommand command = _dbConnect.CreateCommand();
+                command.CommandText = "UPDATE `partij_standpunt` SET `mening`= @mening WHERE `standpunt_id`= @stanp AND `partij_id`= @part";
+                command.Parameters.AddWithValue("@part", part);
+                command.Parameters.AddWithValue("@stanP", stanP);
+                command.Parameters.AddWithValue("@mening", mening);
+                int nrOfRowsAffected = command.ExecuteNonQuery();
+                succes = (nrOfRowsAffected != 0);
+            }
+            catch (Exception)
+            {
+                //Problem with the database
+            }
+            finally
+            {
+                _dbConnect.Close();
+            }
+            return succes;
+        }
 
         /*
          * standpunt

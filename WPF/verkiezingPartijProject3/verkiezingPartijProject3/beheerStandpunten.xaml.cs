@@ -35,7 +35,6 @@ namespace verkiezingPartijProject3
             if (standpunt != null)
             {
                 dgStandpunten.ItemsSource = standpunt.DefaultView;
-
             }
         }
 
@@ -82,6 +81,8 @@ namespace verkiezingPartijProject3
             int part = (int)cbPartij.SelectedValue;
             int stanP = (int)cbStandpunt.SelectedValue;
 
+            string l = cbPartij.SelectedItem.ToString();
+            DataRowView ll = (DataRowView)cbPartij.SelectedItem;
             _dbBeheer.InsertStandpunten(part, stanP, tbMe.Text);
 
             FillDataGrid();
@@ -90,16 +91,21 @@ namespace verkiezingPartijProject3
 
         private void dgStandpunten_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DataGrid dg = sender as DataGrid;
+/*            DataGrid dg = sender as DataGrid;
             DataRowView dr = dg.SelectedItem as DataRowView;
             if (dr != null)
             {
+                string l = dr.Row.ItemArray.GetValue(5).ToString();
+                string p = dr.Row.ItemArray.GetValue(2).ToString();
+
+                DataTable d = _dbBeheer.StandpuntbyName(l);
+                cbStandpunt.SelectedItem = _dbBeheer.StandpuntbyName(l);
+                cbPartij.SelectedItem = _dbBeheer.PartijbyName(p);
                 tbMe.Text = dr["mening"].ToString();
 
-                /*btnUpdatepar.IsEnabled = true;
+                btnUpdatepar.IsEnabled = true;
                 btnDeletepar.IsEnabled = true;
                 btnCreatepar.IsEnabled = false;*/
             }
         }
-    }
 }
