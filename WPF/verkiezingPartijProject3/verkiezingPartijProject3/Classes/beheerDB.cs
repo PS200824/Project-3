@@ -626,15 +626,16 @@ namespace verkiezingPartijProject3.Classes
 
         //_____________ CREATE ________________
 
-        public bool InsertVerkiezing(string verkiezingsoort)
+        public bool InsertVerkiezing(string selectedVerS, DateTime? datum)
         {
             bool succes = false;
             try
             {
                 _dbConnect.Open();
                 MySqlCommand command = _dbConnect.CreateCommand();
-                command.CommandText = "INSERT INTO `verkiezingsoort` (`verkiezingsoort`) VALUES (@verkiezingsoort)";
-                command.Parameters.AddWithValue("@verkiezingsoort", verkiezingsoort);
+                command.CommandText = "INSERT INTO verkiezing (verkiezingsoortID, datum) VALUES (@selectedVerS, @datum)";
+                command.Parameters.AddWithValue("@datum", datum);
+                command.Parameters.AddWithValue("@selectedVerS", selectedVerS);
                 int nrOfRowsAffected = command.ExecuteNonQuery();
                 succes = (nrOfRowsAffected != 0);
             }
@@ -652,15 +653,15 @@ namespace verkiezingPartijProject3.Classes
 
         //_____________ Update ____________
 
-        public bool UpdateVerkiezing(string verk_id, string verS_id, string datum)
+        public bool UpdateVerkiezing(string verk_id, string SelectedVerS, DateTime? datum)
         {
             bool succes = false;
             try
             {
                 _dbConnect.Open();
                 MySqlCommand command = _dbConnect.CreateCommand();
-                command.CommandText = "UPDATE verkiezing SET verkiezingsoortID = @verS_id, datum = @datum WHERE verkiezing.verkiezing_id = @verk_id;";
-                command.Parameters.AddWithValue("@verS_id", verS_id);
+                command.CommandText = "UPDATE verkiezing SET verkiezingsoortID = @SelectedVerS, datum = @datum WHERE verkiezing.verkiezing_id = @verk_id";
+                command.Parameters.AddWithValue("@SelectedVerS", SelectedVerS);
                 command.Parameters.AddWithValue("@verk_id", verk_id);
                 command.Parameters.AddWithValue("@datum", datum);
                 int nrOfRowsAffected = command.ExecuteNonQuery();

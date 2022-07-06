@@ -80,12 +80,33 @@ namespace verkiezingPartijProject3
 
         private void btnUpdateVerk_Click(object sender, RoutedEventArgs e)
         {
-            _dbBeheer.UpdateVerkiezing(tbId.Text, cbVerS.SelectedValue.ToString(), dpDatum.ToString());
+
+            if(_dbBeheer.UpdateVerkiezing(tbId.Text, cbVerS.SelectedValue.ToString(), dpDatum.SelectedDate))
+            {
+                MessageBox.Show($"Verkiezingsoort {tbId.Text} aangepast");
+                cbVerS.SelectedIndex = -1;
+            }
+            else
+            {
+                MessageBox.Show($"Aanpassen van {tbId.Text} mislukt");
+            }
+            FillDataGrid();
         }
 
         private void btnCreateVerk_Click(object sender, RoutedEventArgs e)
         {
+            //DatePicker string : MM/DD/YYYY (Fout, moet zijn: YYYY/MM/DD)
+            if (_dbBeheer.InsertVerkiezing(cbVerS.SelectedValue.ToString(), dpDatum.SelectedDate))
+            {
+                MessageBox.Show($"Verkiezingsoort aangemaakt");
+                cbVerS.SelectedIndex = -1;
+            }
+            else
+            {
+                MessageBox.Show($"Het toevoegen van verkiezing is mislukt");
 
+            }
+            FillDataGrid();
         }
     }
 }
