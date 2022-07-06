@@ -560,7 +560,7 @@ namespace verkiezingPartijProject3.Classes
             {
                 _dbConnect.Open();
                 MySqlCommand command = _dbConnect.CreateCommand();
-                command.CommandText = "SELECT * FROM verkiezing;";
+                command.CommandText = "SELECT verkiezing_id, verkiezingsoortID, verkiezingsoort, datum FROM verkiezing JOIN verkiezingsoort ON verkiezingsoortID = verkiezingsoort_id";
                 MySqlDataReader reader = command.ExecuteReader();
                 result.Load(reader);
             }
@@ -574,6 +574,54 @@ namespace verkiezingPartijProject3.Classes
                 _dbConnect.Close();
             }
             return result;
+        }
+
+        public DataTable SelectVerS()
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                _dbConnect.Open();
+                MySqlCommand command = _dbConnect.CreateCommand();
+                command.CommandText = "SELECT * FROM verkiezingsoort";
+                MySqlDataReader reader = command.ExecuteReader();
+                result.Load(reader);
+            }
+            catch (Exception)
+            {
+
+
+            }
+            finally
+            {
+                _dbConnect.Close();
+            }
+            return result;
+        }
+
+        // ______________ Delete __________________
+
+        public bool DeleteVerk(string verk_id)
+        {
+            bool succes = false;
+            try
+            {
+                _dbConnect.Open();
+                MySqlCommand command = _dbConnect.CreateCommand();
+                command.CommandText = "DELETE FROM verkiezing WHERE verkiezing.verkiezing_id = @verk_id";
+                command.Parameters.AddWithValue("@verk_id", verk_id);
+                int nrOfRowsAffected = command.ExecuteNonQuery();
+                succes = (nrOfRowsAffected != 0);
+            }
+            catch (Exception)
+            {
+                //Problem with the database
+            }
+            finally
+            {
+                _dbConnect.Close();
+            }
+            return succes;
         }
     }
 }
