@@ -80,7 +80,7 @@ namespace verkiezingPartijProject3
 
         private void btnUpdateVerk_Click(object sender, RoutedEventArgs e)
         {
-
+            _dbBeheer.UpdateVerkiezing(tbId.Text, cbVerS.SelectedValue.ToString(), dpDatum.ToString());
         }
 
         private void btnCreateVerk_Click(object sender, RoutedEventArgs e)

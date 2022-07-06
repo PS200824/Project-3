@@ -623,5 +623,59 @@ namespace verkiezingPartijProject3.Classes
             }
             return succes;
         }
+
+        //_____________ CREATE ________________
+
+        public bool InsertVerkiezing(string verkiezingsoort)
+        {
+            bool succes = false;
+            try
+            {
+                _dbConnect.Open();
+                MySqlCommand command = _dbConnect.CreateCommand();
+                command.CommandText = "INSERT INTO `verkiezingsoort` (`verkiezingsoort`) VALUES (@verkiezingsoort)";
+                command.Parameters.AddWithValue("@verkiezingsoort", verkiezingsoort);
+                int nrOfRowsAffected = command.ExecuteNonQuery();
+                succes = (nrOfRowsAffected != 0);
+            }
+            catch (Exception)
+            {
+                //Problem with the database
+            }
+            finally
+            {
+                _dbConnect.Close();
+            }
+            return succes;
+        }
+
+
+        //_____________ Update ____________
+
+        public bool UpdateVerkiezing(string verk_id, string verS_id, string datum)
+        {
+            bool succes = false;
+            try
+            {
+                _dbConnect.Open();
+                MySqlCommand command = _dbConnect.CreateCommand();
+                command.CommandText = "UPDATE verkiezing SET verkiezingsoortID = @verS_id, datum = @datum WHERE verkiezing.verkiezing_id = @verk_id;";
+                command.Parameters.AddWithValue("@verS_id", verS_id);
+                command.Parameters.AddWithValue("@verk_id", verk_id);
+                command.Parameters.AddWithValue("@datum", datum);
+                int nrOfRowsAffected = command.ExecuteNonQuery();
+                succes = (nrOfRowsAffected != 0);
+            }
+            catch (Exception)
+            {
+                //Problem with the database
+            }
+            finally
+            {
+                _dbConnect.Close();
+            }
+            return succes;
+        }
+
     }
 }
